@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>All4</title>
+        <link rel="stylesheet" href="app.css" />
+    </head>
+    <body>
+        
+        <nav class="app-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140">
+                <g class="blocks">
+                    <use xlink:href="#blocks" />
+                </g>
+                <g class="swipers">
+                    <g class="intro-swiper">
+                        <use xlink:href="#introSwiper" />
+                    </g>
+                    <g class="loading-swiper">
+                        <use xlink:href="#loadingSwiper" />
+                    </g>
+                </g>
+                <g class="mask">
+                    <use class="pre" xlink:href="#mask" />
+                    <use class="post" xlink:href="#mask" />
+                </g>
+            </svg>
+            <ul>
+                <li><a href="#my4">My4</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#live">Live TV</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#boxsets">Box Sets</a></li>
+                <li><a href="#catchup">Catch Up</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#help">Help</a></li>
+            </ul>
+        </nav>
+        <main id="home" class="app-wrapper">
+            <h1 class="visuallyHidden">Welcome to All4</h1>
+            <section id="hero" class="hero">
+                <div id="heroWrap">
+                </div>
+            </section>
+        </main>
+        <div class="overlay">
+            <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140">
+                <defs>
+                    <style>
+                        
+                        .yellow {
+                            fill: #ffe600;
+                        }
+                        .teal {
+                            fill: #00ffc4;
+                         }
+                        
+                        @keyframes blocksIn {
+                            0% { clip-path: inset(0% 100% 0% 0%); }
+                            100% { clip-path: inset(0% 0% 0% 0%); }
+                        }
+                        @keyframes blocksOut {
+                            0% { clip-path: inset(0% 0% 0% 0%); }
+                            100% { clip-path: inset(0% 100% 0% 0%); }
+                        }
+                        
+                        
+                        #blocks polyline {
+                            fill: #FFF;
+                            clip-path: inset(0% 100% 0% 0%);
+                            animation-timing-function: ease-in-out;
+                            animation-iteration-count: 1;
+                            animation-direction: normal;
+                            animation-fill-mode: forwards;
+                            animation-play-state: paused;
+                        }
+                        .in #blocks polyline {
+                            animation-name: blocksIn;
+                            animation-play-state: running;
+                            animation-duration: 200ms;
+                            animation-delay: 1000ms;
+                        }
+                        .in #blocks polyline:nth-of-type(5),
+                        .in #blocks polyline:nth-of-type(6) {					
+                            animation-delay: 1100ms;
+                        }
+                        .in #blocks polyline:nth-of-type(7),
+                        .in #blocks polyline:nth-of-type(8) {
+                            animation-duration: 200ms;
+                            animation-delay: 1200ms;
+                        }
+                        
+                        .out #blocks polyline {
+                            animation-name: blocksOut;
+                            animation-play-state: running;
+                            animation-duration: 200ms;
+                            animation-delay: 0;
+                        }
+                        .out #blocks polyline:nth-of-type(5),
+                        .out #blocks polyline:nth-of-type(6) {					
+                            animation-delay: 100ms;
+                        }
+                        .out #blocks polyline:nth-of-type(7),
+                        .out #blocks polyline:nth-of-type(8) {
+                            animation-delay: 200ms;
+                        }
+                        
+                        .loading #blocks polyline {
+                            clip-path: inset(0% 0% 0% 0%);
+                        }
+                        
+                        @keyframes loadingIn {
+                            0% { opacity: 1; transform: translate(-180%,0); }
+                            100% { opacity: 1; transform: translate(0,0); }
+                        }
+                        
+                        .loading-swiper,
+                        .intro-swiper {
+                            opacity: 0;
+                        }
+                        
+                        .in .loading-swiper {
+                            display: block;
+                            transform: translate(-180%,0);
+                            animation-timing-function: ease-out;
+                            animation-iteration-count: 1;
+                            animation-direction: normal;
+                            animation-fill-mode: forwards;
+                            animation-play-state: paused;
+                            animation-name: loadingIn;
+                            animation-play-state: running;
+                            animation-duration: 2000ms;
+                            animation-delay: 1000ms;
+                            opacity: 0;
+                        }
+                        
+                        @keyframes longIn {
+                            0% { opacity: 1; transform: translate(-100vw,0); }
+                            100% { opacity: 1; transform: translate(40%,0); }
+                        }
+        
+                        .in .intro-swiper {
+                            display: block;
+                            transform: translate(-180%,0);
+                            animation-timing-function: ease-in-out;
+                            animation-iteration-count: 1;
+                            animation-direction: normal;
+                            animation-fill-mode: forwards;
+                            animation-play-state: paused;
+                            animation-name: longIn;
+                            animation-play-state: running;
+                            animation-duration: 1400ms;
+                            animation-delay: 0;
+                            opacity: 0;
+                        }
+                        
+                        .mask use {
+                            opacity: 0;
+                            fill: #1E1E1E;
+                            width: 50vw;
+                        }
+                        .mask .pre {
+                            transform: translate(calc( -100vw - 50% ));
+                        }
+                        .loading .mask .pre {
+                            opacity: 1;
+                        }
+                        .mask .post {
+                            transform: translate(50%);
+                            opacity: 1;
+                        }
+                        
+                        .in .mask .pre {
+                            opacity: 1;
+                            transition: opacity 0s 1000ms;
+                        }
+                        
+                        
+                        
+                        @keyframes loading {
+                            0% { transform: translate(0,0); }
+                            100% { transform: translate(236%,0); }
+                        }
+                        .loading-swiper {
+                            transform: translate(-100vw,0);
+                        }
+                        .loading .loading-swiper {
+                            transform: translate(0,0);
+                            animation-name: loading;
+                            animation-duration: 3s;
+                            animation-delay: 0;
+                            animation-timing-function: ease-in-out;
+                            animation-iteration-count: infinite;
+                            animation-direction: normal;
+                            animation-fill-mode: forwards;
+                            animation-play-state: running;
+                            opacity: 1;
+                        }	
+                        
+                        
+                        
+                    </style>
+                    <g id="blocks">
+                        <polyline points="64,0 73,7 62.6,20 62.6,2 "/>
+                        <polyline points="62.6,31.6 73.6,17.6 73.6,75 62.6,75 "/>
+                        <polyline points="62.6,101 73.6,101 73.6,121 62.6,121"/>
+                        <polyline points="62.6,128.5 90.6,128.5 90.6,139.5 62.5,139.5"/>
+                        <polyline points="44.1,25.2 55.1,10.9 55.1,75 44.1,75 "/>
+                        <polyline points="44.1,101 55.1,101 55.1,139.5 44.1,139.5 "/>
+                        <polyline points="25.6,128.5 36.6,128.5 36.6,139.5 25.6,139.5 "/>
+                        <polyline points="4,75 36.6,34 36.6,52.2 18.3,75"/>
+                    </g>
+                    
+                    <rect id="shortBlock" x="72.6" y="82.5" width="100" height="11" />
+                    <rect id="longBlock" x="72.6" y="82.5" width="50vw" height="11" />
+                    <polyline id="point" points="72.6,82.5 73,82.5 73,93.5 63.6,93.5"/>
+                    
+                    <g id="shortSwiper">
+                        <use xlink:href="#shortBlock" />
+                        <use xlink:href="#point" />
+                    </g>
+                    <g id="longSwiper">
+                        <use xlink:href="#longBlock" />
+                        <use xlink:href="#point" />
+                    </g>
+                    
+                    <g id="loadingSwiper">
+                        <use xlink:href="#shortSwiper" class="yellow" />
+                        <use xlink:href="#shortSwiper" class="teal" x="-118" />
+                        <use xlink:href="#shortSwiper" class="yellow" x="-236" />				
+                        <use xlink:href="#shortSwiper" class="teal" x="-354" />
+                    </g>
+                    <g id="introSwiper">
+                        <use xlink:href="#longSwiper" class="teal" x="0" />
+                    </g>
+                    <clipPath id="block-clip">
+                     <use xlink:href="#blocks" />
+                    </clipPath>
+                    <rect id="mask" x="50" y="81.5" width="100vw" height="13" />
+                </defs>
+                
+                
+                <g class="blocks">
+                    <use xlink:href="#blocks" />
+                </g>
+                <g class="swipers">
+                    <g class="intro-swiper">
+                        <use xlink:href="#introSwiper" />
+                    </g>
+                    <g class="loading-swiper">
+                        <use xlink:href="#loadingSwiper" />
+                    </g>
+                </g>
+                <g class="mask">
+                    <use class="pre" xlink:href="#mask" />
+                    <use class="post" xlink:href="#mask" />
+                </g>
+                    
+            </svg>
+            <h2 id="status"></h2>
+        </div>
+        <div class="control-pad">
+            <span class="arrow" id="up"></span>
+            <span class="arrow" id="down"></span>
+            <span class="arrow" id="left"></span>
+            <span class="arrow" id="right"></span>
+            <span id="ok"></span>
+            <span id="back"></span>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
