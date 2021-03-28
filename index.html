@@ -2,15 +2,318 @@
 <html lang="en">
 <head>
 <title>Fire app</title>
-  <style>
-    body { 
-      background-color: #FFF; 
-      color: #000;
-    }
-    
-  </style>
+<style>
+    @import url("https://fonts.channel4.com//stylesheet?c4.text&c4.headline&c4.medium");
+@import url("https://fonts.channel4.com/stylesheet?c4.text&c4.headline&c4.medium&4text.regular&4text.medium");
+:root {
+  	--all4-bg: #1E1E1E;
+	--all4-text: #FFF;
+	--all4-yellow: #ffe600;
+	--all4-teal: #00ffc4;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	background-color: var(--all4-bg);
+	font: normal 400 1em/1.6 "4text.regular.punctuation","4text.regular.currency","4text.regular.maths","4text.regular.lowercase","4text.regular.uppercase","4text.regular.numbers",Trebuchet MS,Lucida Sans Unicode,Lucida Grande,Lucida Sans,Arial,sans-serif;
+	color: var(--all4-text);
+}
+h1 {
+	color: #FFF;
+	font-size: 2em;
+	padding: 1em;
+}
+div {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-items: center;
+	height: 100vh;
+}
+svg {
+	width: 100%;
+	height: 60vh;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+/* SVG animation controls */
+ul {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	list-style: none;
+	flex-wrap: wrap;
+}
+button {
+	margin: 5px;
+	border: 1px solid var(--all4-yellow);
+	color: #FFF;
+	font-size: 1.6em;
+	background-color: transparent;
+	-webkit-appearance: none;
+	appearance: none;
+	font-family: "4text.regular.punctuation","4text.regular.currency","4text.regular.maths","4text.regular.lowercase","4text.regular.uppercase","4text.regular.numbers",Trebuchet MS,Lucida Sans Unicode,Lucida Grande,Lucida Sans,Arial,sans-serif;
+	padding: 1em 2em;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+button:hover,
+button:focus {
+	background-color: var(--all4-teal);
+	color: var(--all4-bg);
+	border-color: var(--all4-bg);
+}
+
+
+</style>
 </head>
 <body>
-<h1>Test fire app</h1>
+    <div>
+        <h1>All4 logo - patchy rendering on mobile</h1>
+        <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140">
+            <defs>
+                <style>
+                    
+                    .yellow {
+                        fill: #ffe600;
+                    }
+                    .teal {
+                        fill: #00ffc4;
+                     }
+                    
+                    @keyframes blocksIn {
+                        0% { clip-path: inset(0% 100% 0% 0%); }
+                        100% { clip-path: inset(0% 0% 0% 0%); }
+                    }
+                    @keyframes blocksOut {
+                        0% { clip-path: inset(0% 0% 0% 0%); }
+                        100% { clip-path: inset(0% 100% 0% 0%); }
+                    }
+                    
+                    
+                    #blocks polyline {
+                        fill: #FFF;
+                        clip-path: inset(0% 100% 0% 0%);
+                        animation-timing-function: ease-in-out;
+                        animation-iteration-count: 1;
+                        animation-direction: normal;
+                        animation-fill-mode: forwards;
+                        animation-play-state: paused;
+                    }
+                    .in #blocks polyline {
+                        animation-name: blocksIn;
+                        animation-play-state: running;
+                        animation-duration: 200ms;
+                        animation-delay: 1000ms;
+                    }
+                    .in #blocks polyline:nth-of-type(5),
+                    .in #blocks polyline:nth-of-type(6) {					
+                        animation-delay: 1100ms;
+                    }
+                    .in #blocks polyline:nth-of-type(7),
+                    .in #blocks polyline:nth-of-type(8) {
+                        animation-duration: 200ms;
+                        animation-delay: 1200ms;
+                    }
+                    
+                    .out #blocks polyline {
+                        animation-name: blocksOut;
+                        animation-play-state: running;
+                        animation-duration: 200ms;
+                        animation-delay: 0;
+                    }
+                    .out #blocks polyline:nth-of-type(5),
+                    .out #blocks polyline:nth-of-type(6) {					
+                        animation-delay: 100ms;
+                    }
+                    .out #blocks polyline:nth-of-type(7),
+                    .out #blocks polyline:nth-of-type(8) {
+                        animation-delay: 200ms;
+                    }
+                    
+                    .loading #blocks polyline {
+                        clip-path: inset(0% 0% 0% 0%);
+                    }
+                    
+                    @keyframes loadingIn {
+                        0% { opacity: 1; transform: translate(-180%,0); }
+                        100% { opacity: 1; transform: translate(0,0); }
+                    }
+                    
+                    .loading-swiper,
+                    .intro-swiper {
+                        opacity: 0;
+                    }
+                    
+                    .in .loading-swiper {
+                        display: block;
+                        transform: translate(-180%,0);
+                        animation-timing-function: ease-out;
+                        animation-iteration-count: 1;
+                        animation-direction: normal;
+                        animation-fill-mode: forwards;
+                        animation-play-state: paused;
+                        animation-name: loadingIn;
+                        animation-play-state: running;
+                        animation-duration: 2000ms;
+                        animation-delay: 1000ms;
+                        opacity: 0;
+                    }
+                    
+                    @keyframes longIn {
+                        0% { opacity: 1; transform: translate(-100vw,0); }
+                        100% { opacity: 1; transform: translate(40%,0); }
+                    }
+    
+                    .in .intro-swiper {
+                        display: block;
+                        transform: translate(-180%,0);
+                        animation-timing-function: ease-in-out;
+                        animation-iteration-count: 1;
+                        animation-direction: normal;
+                        animation-fill-mode: forwards;
+                        animation-play-state: paused;
+                        animation-name: longIn;
+                        animation-play-state: running;
+                        animation-duration: 1400ms;
+                        animation-delay: 0;
+                        opacity: 0;
+                    }
+                    
+                    .mask use {
+                        opacity: 0;
+                        fill: #1E1E1E;
+                        width: 50vw;
+                    }
+                    .mask .pre {
+                        transform: translate(calc( -100vw - 50% ));
+                    }
+                    .loading .mask .pre {
+                        opacity: 1;
+                    }
+                    .mask .post {
+                        transform: translate(50%);
+                        opacity: 1;
+                    }
+                    
+                    .in .mask .pre {
+                        opacity: 1;
+                        transition: opacity 0s 1000ms;
+                    }
+                    
+                    
+                    
+                    @keyframes loading {
+                        0% { transform: translate(0,0); }
+                        100% { transform: translate(236%,0); }
+                    }
+                    .loading-swiper {
+                        transform: translate(-100vw,0);
+                    }
+                    .loading .loading-swiper {
+                        transform: translate(0,0);
+                        animation-name: loading;
+                        animation-duration: 3s;
+                        animation-delay: 0;
+                        animation-timing-function: ease-in-out;
+                        animation-iteration-count: infinite;
+                        animation-direction: normal;
+                        animation-fill-mode: forwards;
+                        animation-play-state: running;
+                        opacity: 1;
+                    }	
+                    
+                    
+                    
+                </style>
+                <g id="blocks">
+                    <polyline points="64,0 73,7 62.6,20 62.6,2 "/>
+                    <polyline points="62.6,31.6 73.6,17.6 73.6,75 62.6,75 "/>
+                    <polyline points="62.6,101 73.6,101 73.6,121 62.6,121"/>
+                    <polyline points="62.6,128.5 90.6,128.5 90.6,139.5 62.5,139.5"/>
+                    <polyline points="44.1,25.2 55.1,10.9 55.1,75 44.1,75 "/>
+                    <polyline points="44.1,101 55.1,101 55.1,139.5 44.1,139.5 "/>
+                    <polyline points="25.6,128.5 36.6,128.5 36.6,139.5 25.6,139.5 "/>
+                    <polyline points="4,75 36.6,34 36.6,52.2 18.3,75"/>
+                </g>
+                
+                <rect id="shortBlock" x="72.6" y="82.5" width="100" height="11" />
+                <rect id="longBlock" x="72.6" y="82.5" width="50vw" height="11" />
+                <polyline id="point" points="72.6,82.5 73,82.5 73,93.5 63.6,93.5"/>
+                
+                <g id="shortSwiper">
+                    <use xlink:href="#shortBlock" />
+                    <use xlink:href="#point" />
+                </g>
+                <g id="longSwiper">
+                    <use xlink:href="#longBlock" />
+                    <use xlink:href="#point" />
+                </g>
+                
+                <g id="loadingSwiper">
+                    <use xlink:href="#shortSwiper" class="yellow" />
+                    <use xlink:href="#shortSwiper" class="teal" x="-118" />
+                    <use xlink:href="#shortSwiper" class="yellow" x="-236" />				<use xlink:href="#shortSwiper" class="teal" x="-354" />
+                </g>
+                <g id="introSwiper">
+                    <use xlink:href="#longSwiper" class="teal" x="0" />
+                </g>
+                <clipPath id="block-clip">
+                 <use xlink:href="#blocks" />
+                </clipPath>
+                <rect id="mask" x="50" y="81.5" width="100vw" height="13" />
+            </defs>
+            
+            
+            <g class="blocks">
+                <use xlink:href="#blocks" />
+            </g>
+            <g class="swipers">
+                <g class="intro-swiper">
+                    <use xlink:href="#introSwiper" />
+                </g>
+                <g class="loading-swiper">
+                    <use xlink:href="#loadingSwiper" />
+                </g>
+            </g>
+            <g class="mask">
+                <use class="pre" xlink:href="#mask" />
+                <use class="post" xlink:href="#mask" />
+            </g>
+                
+        </svg>
+            
+        <ul>
+            <li><button id="autoRun">All states</button></li>	
+            <li><button id="in">Animate in</button></li>
+            <li><button id="loading">Simulate loading</button></li>
+            <li><button id="reset">Reset</button></li>
+        </ul>
+    </div>
+    <script>
+        const logo = document.getElementById('logo');
+const btns = document.body.querySelectorAll('button');
+btns.forEach(function(el){
+	el.addEventListener('click',function(){
+		logo.classList = '';
+		if( this.id === 'autoRun' ){
+			logo.classList.add('in');
+			setTimeout(function(){
+				logo.classList.remove('in');
+				logo.classList.add('loading');
+			},3000);
+		} else {
+			logo.classList.add(this.id);
+		}
+	});
+});
+    </script>
 </body>
 </html>
