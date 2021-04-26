@@ -364,11 +364,13 @@ document.addEventListener('keydown',function(evt){
     moveFocus = (code, el) => {
         // Define actions based on active element
         if( el.tagName === 'A' ){
-            handleLink(code);
+            //handleLink(code);
         } else if( el.tagName === 'BUTTON' ){
-            handleButton(code, el);
+            //handleButton(code, el);
         }
     };
+    
+    document.getElementById('btnReplay').textContent = evt.keyCode;
         
     // Key codes needed
     if( evt.keyCode === 39 ){
